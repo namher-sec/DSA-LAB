@@ -1,0 +1,7 @@
+Task-1:
+
+Outputs:
+
+cout<< first->data;                       output: 1
+cout<<first->next->next->data;            output: 3
+cout<<ptr->next->data;                    output: 3
