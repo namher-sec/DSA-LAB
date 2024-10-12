@@ -23,9 +23,10 @@ The primary goal of this journal is to reinforce my understanding of data struct
 
 Each lab journal documents a specific topic or exercise, including the problem statement, my approach, and the code implemented.
 
-- **Lab Journal 1:** [Array Basics](https://github.com/namher-sec/DSA-LAB/tree/main/DSA-Lab-1)
-- **Lab Journal 2:** [Linked Lists](https://github.com/namher-sec/DSA-LAB/tree/main/DSA-Lab-2)
-- **Lab Journal 3:** [Binary Trees](https://github.com/namher-sec/DSA-LAB/tree/main/DSA-Lab-3)
+- **Lab Journal 1:** [Journal 1](https://github.com/namher-sec/DSA-LAB/tree/main/DSA-Lab-1)
+- **Lab Journal 2:** [Journal 2](https://github.com/namher-sec/DSA-LAB/tree/main/DSA-Lab-2)
+- **Lab Journal 3:** [Journal 3](https://github.com/namher-sec/DSA-LAB/tree/main/DSA-Lab-3)
+- **Lab Journal 4:** [Journal 4](https://github.com/namher-sec/DSA-LAB/tree/main/DSA-Lab-4)
 
 ## 📬 Contact
 
