@@ -6,33 +6,17 @@ List::List(){
 }
 
 bool List::is_list_empty(){
-    if(head == NULL){
-        return true;
-    }
-    else{
-        return false;
-    }
-
+    return head == NULL;
 }
 
 void List::insert_begin(int num){
 
     Node* temp = new Node;
     temp->set_data(num);
-    temp->set_next(NULL);
-
-    if(head == NULL){
-        head = temp;
-    }
-    else{
-        Node* p = head;
-
-        while(p->get_next() != NULL){
-            p = p->get_next();
-        }
-        p->set_next(temp);
-    }
+    temp->set_next(head);
+    head = temp;
 }
+
 
 void List::insert_end(int value){
     Node* temp = new Node;
@@ -107,14 +91,15 @@ void List::delete_node(int val){
 
 
 void List::display(){
-    Node* p = new Node;
-    p = head;
+    Node* p = head;  
 
-    if(head == NULL){
-        std::cout <<  "List is Empty!! " << '\n';
+    if (p == NULL) {
+        std::cout << "List is Empty!! " << '\n';
+        return;  
     }
+
     std::cout << "List elements: " << '\n';
-    while(p != NULL){
+    while (p != NULL) {
         std::cout << p->get_data() << " ";
         p = p->get_next();
     }
