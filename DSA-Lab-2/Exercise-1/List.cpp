@@ -35,23 +35,25 @@ void List::insert_end(int value){
     }
 }
 
-void List::insert_after(int prev_val, int new_val){
-    Node* temp = new Node;
+oid List::insert_after(int prev_val, int new_val){
+
+    Node *temp = new Node;
     temp->set_data(new_val);
 
     if(head == NULL){
-        head->set_next(temp);
         return;
     }
-    Node* current = head;
-    while(current->get_next() != NULL){
-        if(current->get_data() == prev_val){
-            temp->set_next(current->get_next());
-            current->set_next(temp);
-            return;
-        }
-        current = current->get_next();
+
+    Node *current = head;
+    while(current != NULL){
+            if(current->get_data() == prev_val){
+                temp->set_next(current->get_next());
+                current->set_next(temp);
+                return;
+             }
+             current = current->get_next();
     }
+
 }
 
 
