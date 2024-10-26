@@ -13,6 +13,7 @@ public:
         void delete_begin(); 
         void delete_end();
         void traverse();
+        void traverse_reverse();
 
 private:
 	Node* head;
