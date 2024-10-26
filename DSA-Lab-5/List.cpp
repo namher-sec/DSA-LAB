@@ -55,26 +55,25 @@ void List::insert_end(int value)
 }
 
 void List::deleteNode(int value) {
-    Node* current = head; // Start from the head of the list
-    // Search for the node with the value
+    Node* current = head; 
     while (current != nullptr && current->get_data() != value) {
-        current = current->get_next(); // Move to the next node
+        current = current->get_next(); 
     }
 
-    // If we found the node to delete
+   
     if (current != nullptr) {
-        // If there's a previous node, link it to the next node
+        
         if (current->get_prev() != nullptr) {
             current->get_prev()->set_next(current->get_next());
         } else {
-            head = current->get_next(); // Update head if needed
+            head = current->get_next(); 
         }
 
-        // If there's a next node, link it back to the previous node
+        
         if (current->get_next() != nullptr) {
             current->get_next()->set_prev(current->get_prev());
         } else {
-            p_last = current->get_prev(); // Update p_last if needed
+            p_last = current->get_prev(); 
         }
 
         delete current; // Free memory
@@ -82,71 +81,91 @@ void List::deleteNode(int value) {
 }
 
 void List::insert_after(int prevValue, int nextValue) {
-    Node* current = head; // Start from the head of the list
-    // Search for the node with the value prevValue
+    Node* current = head; 
     while (current != nullptr && current->get_data() != prevValue) {
-        current = current->get_next(); // Move to the next node
+        current = current->get_next(); 
     }
 
-    // If we found the node with prevValue
+   
     if (current != nullptr) {
-        Node* newNode = new Node; // Create the new node
+        Node* newNode = new Node; 
         newNode->set_data(nextValue);
-        newNode->set_next(current->get_next()); // Set newNode's next to current's next
-        newNode->set_prev(current); // Set newNode's previous to current
+        newNode->set_next(current->get_next()); 
+        newNode->set_prev(current); 
 
-        // Adjust the next node's previous pointer if it exists
+       
         if (current->get_next() != nullptr) {
             current->get_next()->set_prev(newNode);
         } else {
-            p_last = newNode; // Update p_last if current was the last node
+            p_last = newNode; 
         }
 
-        current->set_next(newNode); // Link current's next to the new node
+        current->set_next(newNode); 
     }
 }
 void List::delete_begin() {
-    if (head == nullptr) { // List is empty
+    if (head == nullptr) {
         std::cout << "List is empty, cannot delete from the beginning." << '\n';
         return;
     }
 
-    Node* temp = head; // Store the current head
+    Node* temp = head; 
 
-    if (head == p_last) { // Only one node in the list
+    if (head == p_last) { 
         head = nullptr;
         p_first = nullptr;
         p_last = nullptr;
     } else {
-        head = head->get_next(); // Move head to the next node
-        head->set_prev(nullptr); // Update the new head's previous pointer
+        head = head->get_next(); 
+        head->set_prev(nullptr); 
     }
 
-    delete temp; // Free memory of the old head
+    delete temp; 
     std::cout << "Deleted node from the beginning." << '\n';
 }
 
 void List::delete_end() {
-    if (head == nullptr) { // List is empty
+    if (head == nullptr) { 
         std::cout << "List is empty, cannot delete from the end." << '\n';
         return;
     }
 
-    Node* temp = p_last; // Store the current last node
+    Node* temp = p_last; 
 
-    if (head == p_last) { // Only one node in the list
+    if (head == p_last) { 
         head = nullptr;
         p_first = nullptr;
         p_last = nullptr;
     } else {
-        p_last = p_last->get_prev(); // Move p_last to the previous node
-        p_last->set_next(nullptr); // Update the new last node's next pointer
+        p_last = p_last->get_prev(); 
+        p_last->set_next(nullptr); 
     }
 
-    delete temp; // Free memory of the old last node
+    delete temp; 
     std::cout << "Deleted node from the end." << '\n';
 }
 
+void List::reverse() {
+    Node* current = head; 
+    Node* temp = nullptr; 
+
+    
+    while (current != nullptr) {
+        temp = current->get_prev(); 
+        current->set_prev(current->get_next()); 
+        current->set_next(temp); 
+        current = current->get_prev(); 
+    }
+
+    
+    if (temp != nullptr) {
+        head = temp->get_prev(); 
+    }
+    
+    
+    p_first = head; 
+    p_last = temp; 
+}
 
 void List::traverse()
 {
@@ -179,7 +198,7 @@ void List::traverse_reverse() {
         std::cout << p->get_data() << " "; // Print the data of the current node
         p = p->get_prev(); // Move to the previous node
     }
-    std::cout << '\n'; // New line at the end
+    std::cout << '\n'; 
 }
 
 
