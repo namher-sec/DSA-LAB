@@ -105,6 +105,49 @@ void List::insert_after(int prevValue, int nextValue) {
         current->set_next(newNode); // Link current's next to the new node
     }
 }
+void List::delete_begin() {
+    if (head == nullptr) { // List is empty
+        std::cout << "List is empty, cannot delete from the beginning." << '\n';
+        return;
+    }
+
+    Node* temp = head; // Store the current head
+
+    if (head == p_last) { // Only one node in the list
+        head = nullptr;
+        p_first = nullptr;
+        p_last = nullptr;
+    } else {
+        head = head->get_next(); // Move head to the next node
+        head->set_prev(nullptr); // Update the new head's previous pointer
+    }
+
+    delete temp; // Free memory of the old head
+    std::cout << "Deleted node from the beginning." << '\n';
+}
+
+void List::delete_end() {
+    if (head == nullptr) { // List is empty
+        std::cout << "List is empty, cannot delete from the end." << '\n';
+        return;
+    }
+
+    Node* temp = p_last; // Store the current last node
+
+    if (head == p_last) { // Only one node in the list
+        head = nullptr;
+        p_first = nullptr;
+        p_last = nullptr;
+    } else {
+        p_last = p_last->get_prev(); // Move p_last to the previous node
+        p_last->set_next(nullptr); // Update the new last node's next pointer
+    }
+
+    delete temp; // Free memory of the old last node
+    std::cout << "Deleted node from the end." << '\n';
+}
+
+
 void List::traverse()
 {
 	Node* p = p_first;
