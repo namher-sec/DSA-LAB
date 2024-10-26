@@ -1,20 +1,18 @@
 #include "List.h"
 
-List::List()
-{
-	head = NULL;
-	p_first = NULL;
-	p_last = NULL;
+List::List() : head(nullptr), p_first(nullptr), p_last(nullptr) {}
+
+List::~List() {
+    Node* current = head;
+    while (current != nullptr) {
+        Node* next = current->get_next();
+        delete current; // Free the current node
+        current = next;
+    }
 }
 
-bool List::emptyList()
-{
-	if (head == NULL) {
-		return true;
-	}
-	else {
-		return false;
-	}
+bool List::emptyList() const {
+    return head == nullptr;
 }
 
 void List::insert_begin(int value)
