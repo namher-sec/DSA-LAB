@@ -9,8 +9,10 @@ public:
 	void insert_begin(int value);
 	void insert_end(int value);
 	void insert_after(int prev, int next);
-	void deleteNode(int value);
-	void traverse();
+	void deleteNode(int value); 
+        void delete_begin(); 
+        void delete_end();
+        void traverse();
 
 private:
 	Node* head;
