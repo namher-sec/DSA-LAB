@@ -54,14 +54,57 @@ void List::insert_end(int value)
 	}
 }
 
-void List::insert_after(int prev, int next)
-{
+void List::deleteNode(int value) {
+    Node* current = head; // Start from the head of the list
+    // Search for the node with the value
+    while (current != nullptr && current->get_data() != value) {
+        current = current->get_next(); // Move to the next node
+    }
+
+    // If we found the node to delete
+    if (current != nullptr) {
+        // If there's a previous node, link it to the next node
+        if (current->get_prev() != nullptr) {
+            current->get_prev()->set_next(current->get_next());
+        } else {
+            head = current->get_next(); // Update head if needed
+        }
+
+        // If there's a next node, link it back to the previous node
+        if (current->get_next() != nullptr) {
+            current->get_next()->set_prev(current->get_prev());
+        } else {
+            p_last = current->get_prev(); // Update p_last if needed
+        }
+
+        delete current; // Free memory
+    }
 }
 
-void List::deleteNode(int value)
-{
-}
+void List::insert_after(int prevValue, int nextValue) {
+    Node* current = head; // Start from the head of the list
+    // Search for the node with the value prevValue
+    while (current != nullptr && current->get_data() != prevValue) {
+        current = current->get_next(); // Move to the next node
+    }
 
+    // If we found the node with prevValue
+    if (current != nullptr) {
+        Node* newNode = new Node; // Create the new node
+        newNode->set_data(nextValue);
+        newNode->set_next(current->get_next()); // Set newNode's next to current's next
+        newNode->set_prev(current); // Set newNode's previous to current
+
+        // Adjust the next node's previous pointer if it exists
+        if (current->get_next() != nullptr) {
+            current->get_next()->set_prev(newNode);
+        } else {
+            p_last = newNode; // Update p_last if current was the last node
+        }
+
+        current->set_next(newNode); // Link current's next to the new node
+    }
+}
 void List::traverse()
 {
 	Node* p = p_first;
