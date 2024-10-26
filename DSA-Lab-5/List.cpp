@@ -166,4 +166,21 @@ void List::traverse()
 
 }
 
+void List::traverse_reverse() {
+    Node* p = p_last; // Start from the last node
+
+    if (p == nullptr) { // Check if the list is empty
+        std::cout << "List is Empty!! " << '\n';
+        return;
+    }
+
+    std::cout << "List elements in reverse: " << '\n';
+    while (p != nullptr) {
+        std::cout << p->get_data() << " "; // Print the data of the current node
+        p = p->get_prev(); // Move to the previous node
+    }
+    std::cout << '\n'; // New line at the end
+}
+
+
 
