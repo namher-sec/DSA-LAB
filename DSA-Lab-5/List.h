@@ -12,6 +12,8 @@ public:
 	void deleteNode(int value); 
         void delete_begin(); 
         void delete_end();
+        void reverse();
+        void display_alternative();
         void traverse();
         void traverse_reverse();
 
