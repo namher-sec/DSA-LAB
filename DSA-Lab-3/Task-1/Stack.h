@@ -1,6 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 
+
 #include "Node.h"
 
 class Stack {
@@ -11,6 +12,7 @@ public:
     int pop();
     int peek() const;
     bool is_empty() const;
+    void display();
 
 private:
     Node* top;
