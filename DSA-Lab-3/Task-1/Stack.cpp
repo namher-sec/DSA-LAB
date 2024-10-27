@@ -1,9 +1,7 @@
 #include "Stack.h"
 #include <iostream>
 
-Stack::Stack() {
-    top = nullptr;
-}
+Stack::Stack() : top(nullptr) {}
 
 Stack::~Stack() {
     while (!is_empty()) {
@@ -41,3 +39,17 @@ int Stack::peek() const {
 bool Stack::is_empty() const {
     return top == nullptr;
 }
+
+void Stack::display() {
+    if (is_empty()) {
+        std::cout << "No Elements in Stack\n";
+        return;
+    }
+    Node* temp = top;
+    while (temp != nullptr) {
+        std::cout << temp->get_data() << " ";
+        temp = temp->get_next();
+    }
+    std::cout << std::endl; // Newline for formatting
+}
+
